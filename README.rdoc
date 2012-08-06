@@ -1,2 +1,3 @@
 == cdsform
 
+A very simple form processor. Includes "headless" (no plugin) reCaptcha logic.
