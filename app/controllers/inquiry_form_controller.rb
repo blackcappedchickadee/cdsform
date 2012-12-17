@@ -42,6 +42,12 @@ class InquiryFormController < ApplicationController
       inquiry_form = InquiryForm.create(:additional_comments => additional_comments, :budget => budget, :email => email, 
           :event_type => event_type, :locations => locations, :name => name, :performance_dates => performance_dates, :phone => phone)
       inquiry_form.save
+      
+      #mail the inquiry to recipients
+      puts "about to email to recipients"
+      InquiryMailer.send_email(inquiry_form).deliver
+      puts "just finished emailing recipients"
+      
       @message = "success"
       redirect_to redirect_after_save
       
